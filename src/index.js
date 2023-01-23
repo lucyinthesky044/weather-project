@@ -1,6 +1,6 @@
 // Date
-function showDate() {
-  let now = new Date();
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
 
   let date = now.getDate();
   let hours = now.getHours();
@@ -49,8 +49,6 @@ function showDate() {
   ).innerHTML = `Today is ${day} ${date} ${month} ${year}, ${hours}:${minutes}`;
 }
 
-showDate();
-
 // Temperature to Fahrenheit
 function changeTempToFahrenheit(event) {
   event.preventDefault();
@@ -96,6 +94,9 @@ function showWeather(response) {
   );
   document.querySelector("#low-temp-degrees").innerHTML = Math.round(
     response.data.main.temp_min
+  );
+  document.querySelector("#current-date").innerHTML = formatDate(
+    response.data.dt * 1000
   );
 }
 
