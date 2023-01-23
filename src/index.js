@@ -44,9 +44,7 @@ function formatDate(timestamp) {
   ];
   let month = months[now.getMonth()];
 
-  document.querySelector(
-    "#current-date"
-  ).innerHTML = `Today is ${day} ${date} ${month} ${year}, ${hours}:${minutes}`;
+  return `Today is ${day} ${date} ${month} ${year}, ${hours}:${minutes}`;
 }
 
 // Temperature to Fahrenheit
