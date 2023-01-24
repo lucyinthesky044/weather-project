@@ -1,4 +1,5 @@
 // Date
+
 function formatDate(timestamp) {
   let now = new Date(timestamp);
 
@@ -72,6 +73,7 @@ document
 // Show Weather
 
 function showWeather(response) {
+  console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#main-temp").innerHTML = Math.round(
     response.data.main.temp
@@ -96,6 +98,15 @@ function showWeather(response) {
   document.querySelector("#current-date").innerHTML = formatDate(
     response.data.dt * 1000
   );
+  document
+    .querySelector("#icon-main")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document
+    .querySelector("#icon-main")
+    .setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(city) {

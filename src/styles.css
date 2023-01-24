@@ -98,7 +98,7 @@
 .selected-city {
   display: block;
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 42px;
   height: 335px;
   width: 335px;
   border-radius: 200px;
@@ -149,10 +149,11 @@
 }
 
 .icon-main {
-  color: black;
-  padding-bottom: 5px;
+  width: 125px;
+  height: auto;
+  margin-top: -15px;
+  margin-bottom: -10px;
 }
-
 .main-weather-description {
   font-size: 24px;
   text-transform: capitalize;
