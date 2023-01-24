@@ -141,6 +141,10 @@
   text-decoration: none;
 }
 
+.units a {
+  color: #e70000 !important;
+}
+
 .icon-main {
   width: 125px;
   height: auto;
