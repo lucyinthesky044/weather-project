@@ -1,5 +1,3 @@
-// Date
-
 function formatDate(timestamp) {
   let now = new Date(timestamp);
 
@@ -98,12 +96,6 @@ function handleSubmit(event) {
   searchCity(city);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", handleSubmit);
-
-let searchBotton = document.querySelector("#search-botton");
-searchBotton.addEventListener("click", handleSubmit);
-
 function searchLocation(position) {
   let key = "49cb8e792c40ac1acbc32945671fdf8e";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${key}&units=metric`;
@@ -131,6 +123,12 @@ function showCelsiusTemp(event) {
   celsiusLink.classList.add("active");
   temperatureElement.innerHTML = Math.round(celsiusTemp);
 }
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", handleSubmit);
+
+let searchBotton = document.querySelector("#search-botton");
+searchBotton.addEventListener("click", handleSubmit);
 
 let celsiusTemp = null;
 
