@@ -132,20 +132,13 @@
   margin: 0 4px 0 2px;
 }
 
-.units a {
-  text-decoration: none !important;
+.units .active {
   color: #000 !important;
+  cursor: default;
 }
 
-.units a:hover {
-  text-decoration: none !important;
-  color: #e70000 !important;
-  cursor: pointer;
-}
-
-.units a:active {
-  text-decoration: none !important;
-  color: #e70000 !important;
+.units .active:hover {
+  text-decoration: none;
 }
 
 .icon-main {

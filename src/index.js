@@ -48,32 +48,9 @@ function formatDate(timestamp) {
   return `Today is ${day} ${date} ${month} ${year}, ${hours}:${minutes}`;
 }
 
-// Temperature to Fahrenheit
-function changeTempToFahrenheit(event) {
-  event.preventDefault();
-  let mainTemp = document.querySelector("#main-temp");
-  mainTemp.innerHTML = 21;
-}
-
-document
-  .querySelector("#fahrenheit-link")
-  .addEventListener("click", changeTempToFahrenheit);
-
-// Temperature to Celsius
-function changeTempToCelsius(event) {
-  event.preventDefault();
-  let mainTemp = document.querySelector("#main-temp");
-  mainTemp.innerHTML = -6;
-}
-
-document
-  .querySelector("#celsius-link")
-  .addEventListener("click", changeTempToCelsius);
-
-// Show Weather
-
 function showWeather(response) {
-  console.log(response.data);
+  celsiusTemp = response.data.main.temp;
+
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#main-temp").innerHTML = Math.round(
     response.data.main.temp
@@ -138,7 +115,32 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temp");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#main-temp");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
+
 let locationBotton = document.querySelector("#location-botton");
 locationBotton.addEventListener("click", getCurrentLocation);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
 
 searchCity("Kyiv");
