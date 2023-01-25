@@ -178,7 +178,7 @@
   font-size: 15px;
 }
 
-.week-forecast {
+.weather-forecast {
   text-align: center;
   border-left: rgba(33, 37, 41, 0.6) solid 2.5px;
   font-size: 17px;
@@ -190,24 +190,13 @@
   font-size: 20px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
-.first-day {
-  margin: 20px;
+
+.day-by-day-forecast {
+  margin: 10px;
 }
 
-.second-day {
-  margin: 20px;
-  padding-top: 10px;
-}
-
-.third-day {
-  margin: 20px;
-  padding-top: 10px;
-}
-
-.forth-day {
-  margin: 20px;
-  padding-top: 10px;
-  padding-bottom: 20px;
+.weather-forecast-temperature-min {
+  opacity: 0.6;
 }
 
 .footer {
