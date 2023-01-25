@@ -82,10 +82,18 @@ function showWeather(response) {
   document
     .querySelector("#icon-main")
     .setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
+}
+
+function getForecast(coordinates) {
+  let key = "72bb9dab46b9ec3d65f423c63f27a9b8";
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${key}&units=metric`;
+  axios.get(url).then(showForecast);
 }
 
 function searchCity(city) {
-  let key = "49cb8e792c40ac1acbc32945671fdf8e";
+  let key = "72bb9dab46b9ec3d65f423c63f27a9b8";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`;
   axios.get(url).then(showWeather);
 }
@@ -97,7 +105,7 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position) {
-  let key = "49cb8e792c40ac1acbc32945671fdf8e";
+  let key = "72bb9dab46b9ec3d65f423c63f27a9b8";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${key}&units=metric`;
   axios.get(url).then(showWeather);
 }
@@ -124,7 +132,8 @@ function showCelsiusTemp(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemp);
 }
 
-function showForecast() {
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let days = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
@@ -157,7 +166,6 @@ function showForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-showForecast();
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
