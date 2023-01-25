@@ -191,8 +191,8 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-.day-by-day-forecast {
-  margin: 10px;
+.row .align-items-center {
+  margin: 5px;
 }
 
 .weather-forecast-temperature-min {

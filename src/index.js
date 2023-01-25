@@ -124,6 +124,40 @@ function showCelsiusTemp(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemp);
 }
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+  let forecastHTML = `<div class="row align-items-center">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-4" id="weather-forecast-date">
+        ${day}
+        <div id="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max">-1° </span>
+          <span class="weather-forecast-temperature-min">1°</span>
+        </div>
+      </div>
+      <div class="col-4">
+        <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="80"
+        />
+      </div>
+      <div class="col-4" id="weather-forecast-description">
+        Partly Cloudy
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+showForecast();
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
