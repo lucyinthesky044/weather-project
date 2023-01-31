@@ -159,7 +159,7 @@ function searchCity(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
-  let city = document.querySelector("#search-bar").trim();
+  let city = document.querySelector("#search-bar");
   searchCity(city.value);
 }
 
