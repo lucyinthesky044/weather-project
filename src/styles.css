@@ -127,24 +127,6 @@
   line-height: 24px;
 }
 
-.degrees-divider {
-  border-left: solid 1px #868b90;
-  margin: 0 4px 0 2px;
-}
-
-.units .active {
-  color: #000 !important;
-  cursor: default;
-}
-
-.units .active:hover {
-  text-decoration: none;
-}
-
-.units a {
-  color: #e70000 !important;
-}
-
 .icon-main {
   width: 125px;
   height: auto;

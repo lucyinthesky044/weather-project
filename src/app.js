@@ -69,7 +69,6 @@ function showForecast(response) {
 
   let forecastHTML = `<div class="row align-items-center">`;
   forecast.forEach(function (forecastDay, index) {
-    console.log(forecastDay);
     if (index < 5) {
       forecastHTML =
         forecastHTML +
@@ -107,15 +106,12 @@ function showForecast(response) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let key = "a5acb752426cd8188485c35694980e3a";
   let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${key}&units=metric`;
   axios.get(url).then(showForecast);
 }
 
 function showWeather(response) {
-  celsiusTemp = response.data.main.temp;
-
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#main-temp").innerHTML = Math.round(
     response.data.main.temp
@@ -165,24 +161,6 @@ function handleSubmit(event) {
   searchCity(city.value);
 }
 
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#main-temp");
-
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
-}
-
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  let temperatureElement = document.querySelector("#main-temp");
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
-}
-
 function searchLocation(position) {
   let key = "a5acb752426cd8188485c35694980e3a";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${key}&units=metric`;
@@ -194,8 +172,6 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-let celsiusTemp = null;
-
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
@@ -204,11 +180,5 @@ searchBotton.addEventListener("click", handleSubmit);
 
 let locationBotton = document.querySelector("#location-botton");
 locationBotton.addEventListener("click", getCurrentLocation);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusTemp);
 
 searchCity("Kyiv");
