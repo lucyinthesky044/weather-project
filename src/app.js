@@ -63,13 +63,14 @@ function formatDay(timestamp) {
 }
 
 function showForecast(response) {
-  let forecast = response.data.dily;
+  let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row align-items-center">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    console.log(forecastDay);
+    if (index < 5) {
       forecastHTML =
         forecastHTML +
         `
@@ -78,10 +79,10 @@ function showForecast(response) {
         <div id="weather-forecast-temperatures">
           <span class="weather-forecast-temperature-max">${Math.round(
             forecastDay.temp.max
-          )}</span>
+          )}°</span>
           <span class="weather-forecast-temperature-min">${Math.round(
             forecastDay.temp.min
-          )}</span>
+          )}°</span>
         </div>
       </div>
       <div class="col-4">
@@ -93,8 +94,9 @@ function showForecast(response) {
           width="80"
         />
       </div>
-      <div class="col-4" id="weather-forecast-description">
-        Partly Cloudy
+      <div class="col-4" id="weather-forecast-description">${
+        forecastDay.weather[0].description
+      }
       </div>
   `;
     }

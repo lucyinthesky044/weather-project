@@ -199,6 +199,10 @@
   opacity: 0.6;
 }
 
+#weather-forecast-description {
+  text-transform: capitalize;
+}
+
 .footer {
   margin-top: 15px;
   text-align: center;
